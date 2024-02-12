@@ -19,14 +19,15 @@ class colored_shape:
 
     def color_change(self):
         r, g, b = self.color
-
-        r = max(min(int(math.cos(self.angle)*self.range + self.min + self.range/2), self.max), self.min)
-        g = max(min(int(math.cos(self.angle - self.period * 2/3) * self.range + self.min + self.range/2), self.max), self.min)
-        b = max(min(int(math.cos(self.angle + self.period * 2/3) * self.range + self.min + self.range/2), self.max), self.min)
+        f = (math.pi*2)/self.period
+        r = max(min(int(math.cos(self.angle * f)*self.range + self.min + self.range/2), self.max), self.min)
+        g = max(min(int(math.cos(self.angle * f - math.pi * 2/3) * self.range + self.min + self.range/2), self.max), self.min)
+        b = max(min(int(math.cos(self.angle * f + math.pi * 2/3) * self.range + self.min + self.range/2), self.max), self.min)
 
         self.color = (r,g,b)
 
-class circle(colored_shape):
-    def __init__(self,radius, origin, distance=100, angle=0, color=(255, 0, 0), base=0, peak=255):
-        super().__init__(origin, distance, angle, color, base, peak)
+
+class Circle(colored_shape):
+    def __init__(self, radius, origin, distance=100, angle=0, color=(0, 0, 0), base=0, peak=255, period=2*math.pi):
+        super().__init__(origin, distance, angle, color, base, peak, period)
         self.radius = radius
