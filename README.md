@@ -2,12 +2,15 @@
 Creating a simple color wheel animation in pygame
  - Customizable
 	 - angle-color relation
-	 - Varible angle shift
-	 - Varible angle density
-	 - Varible Size
-	 - Varible Darkness/Lightness
-	 - Varible Resolution
-	 - Also comes with Line and Circle 
+	 - angle shift
+	 - angle density
+	 - Size
+	 - Darkness/Lightness
+	 - Resolution
+	 - Also comes with Line and Circle
+  - Modularity
+ 	 - Ring, Circle, and Line can be used outside of pygame
+  	 - Each Object is extremely veratile
 
 # - Major Skills Used -
  - Object Oriented Programming
