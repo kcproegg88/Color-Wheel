@@ -1,7 +1,7 @@
 # Color-Wheel
 Creating a simple color wheel animation in pygame
 
-#Major Skills Used -
+# - Major Skills Used -
  - Object Oriented Programming
  - Trig: Polar Coordinate System
  - Pygame, Python
