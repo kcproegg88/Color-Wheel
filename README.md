@@ -1,5 +1,12 @@
 # Color-Wheel
 Creating a simple color wheel animation in pygame
+ - Varible angle-color relation
+ - Varible angle shift
+ - Varible angle density
+ - Varible Size
+ - Varible Darkness/Lightness
+ - Varible Resolution
+ - Also comes with Line and 
 
 # - Major Skills Used -
  - Object Oriented Programming
