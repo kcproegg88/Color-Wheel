@@ -34,8 +34,7 @@ class Circle(colored_shape):
 
 
 class Ring(colored_shape):
-    def __init__(self, circle_num, radius, origin, dark=False, angle_rate=1, distance=100, width=100, angle=0,
-                 color=(0, 0, 0), base=0, peak=255, period=2*math.pi):
+    def __init__(self, circle_num, radius, origin, dark=False, angle_rate=1, distance=100, width=100, angle=0, color=(0, 0, 0), base=0, peak=255, period=2*math.pi):
         super().__init__(origin, distance, angle, color, base, peak, period)
         self.circle_num = circle_num
         self.radius = radius
@@ -45,30 +44,26 @@ class Ring(colored_shape):
 
     def generate_loop(self):
         # Handles grey scaling for a line
-        separation = int(self.width / self.circle_num)
-        color_grad = int((self.peak - self.base) / self.circle_num)
-
+        separation = self.width / self.circle_num
+        color_grad = (self.peak - self.base) / self.circle_num
         circle = []
         for j in range(int(2 * math.pi / self.angle_rate)):
-            line = [Circle(self.radius, self.origin, self.d - separation * i, self.angle_rate*j, self.color,
-                           (color_grad * i + self.base) * (not self.dark), 255 - color_grad * i * self.dark,
-                           self.period) for i in range(self.circle_num)]
+            line = [Circle(self.radius, self.origin, self.d - separation * i, self.angle_rate*j, self.color, (color_grad * i + self.base) * (not self.dark), 255 - color_grad * i * self.dark, self.period) for i in range(self.circle_num)]
             circle.extend(line)
         return circle
 
+
 class Line(colored_shape):
-    def __init__(self, circle_num, radius, origin, dark=False, angle_rate=1, distance=100, width=100, angle=0,
-                 color=(0, 0, 0), base=0, peak=255, period=2*math.pi):
+    def __init__(self, circle_num, radius, origin, dark=False, angle_rate=1, distance=100, width=100, angle=0, color=(0, 0, 0), base=0, peak=255, period=2*math.pi):
         super().__init__(origin, distance, angle, color, base, peak, period)
         self.circle_num = circle_num
         self.radius = radius
         self.angle_rate = angle_rate/180*math.pi
         self.width = width
         self.dark = dark
+
     def generate_line(self):
         separation = int(self.width / self.circle_num)
-        color_grad = int((self.peak - self.base) / self.circle_num) * (not self.dark)
-        line = [Circle(self.radius, self.origin, self.d - separation * i, self.angle, self.color,
-                       (color_grad * i + self.base) * (not self.dark), 255 - color_grad * i * self.dark,
-                       self.period) for i in range(self.circle_num)]
+        color_grad = int((self.peak - self.base) / self.circle_num)
+        line = [Circle(self.radius, self.origin, self.d - separation * i, self.angle, self.color, (color_grad * i + self.base) * (not self.dark), 255 - color_grad * i * self.dark, self.period) for i in range(self.circle_num)]
         return line
